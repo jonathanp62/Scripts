@@ -1,0 +1,74 @@
+#!/usr/bin/env zsh
+
+# @(#)Status-MongoDB.sh	0.1.0	11/08/2023
+#
+# Copyright (c) Jonathan Martin Parker
+# 324 Lantana Drive
+# Owings Mills, MD 21117 U.S.A.
+# All Rights Reserved.
+#
+# @author       Jonathan Parker
+# @since        0.1.0
+# @version      0.1.0
+# @updated      $LastChangedDate$
+# @revision     $LastChangedRevision$
+#
+# Usage:
+#       Status-MongoDB.sh [optional-configuration-file-path]
+
+if [ "`uname`" = "Darwin" ]
+then
+	export GREP_OPTIONS=
+fi
+
+COLORS_FILE=${HOME}/Config/Colors.cfg
+
+if [ "$#" -eq 0 ]
+then
+        CONFIG_FILE=${HOME}/Config/MongoDB.cfg
+else
+        CONFIG_FILE=${1}
+fi
+
+echo "INFO: Using configuration file ${CONFIG_FILE}..."
+echo "INFO: Using colors file ${COLORS_FILE}..."
+
+source ${COLORS_FILE} 2> /dev/null
+
+if [ "$?" -ne 0 ]
+then
+	echo "ERROR: Unable to source colors file ${COLORS_FILE}."
+	exit 1
+fi
+
+source ${CONFIG_FILE} 2> /dev/null
+
+if [ "$?" -ne 0 ]
+then
+	echo -e "${color_red_light}ERROR: Unable to source configuration file ${CONFIG_FILE}.${color_off}"
+	exit 1
+fi
+
+if [ -z "${mongodb_pattern}" ]
+then
+        echo -e "${color_red_light}ERROR: Variable mongodb_pattern was not found in the configuration file ${CONFIG_FILE}.${color_off}"
+        exit 1
+fi
+
+MONGODB_PATTERN=${mongodb_pattern}
+
+echo "INFO: Sourced MongoDB pattern: ${MONGODB_PATTERN}"
+
+PROCS=`ps -ef|grep ${MONGODB_PATTERN}|grep -v grep|awk '{print $2}'`
+
+if [ -z "${PROCS}" ]
+then
+	echo "INFO: MongoDB is not running."
+else
+	for PROC in ${PROCS}
+	do
+		echo -e "${color_yellow}INFO: MongoDB is running as process ${PROC}.${color_off}"
+	done
+fi
+
+exit 0
