@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# @(#)Sync-Maestro.sh   0.2.15 	06/19/2025
 # @(#)Sync-Maestro.sh   0.2.12 	04/22/2025
 # @(#)Sync-Maestro.sh   0.2.11 	04/07/2025
 # @(#)Sync-Maestro.sh   0.2.10 	03/24/2025
@@ -44,7 +45,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.9
-# @version      0.2.12
+# @version      0.2.15
 # @updated      $LastChangedDate: 2025-04-22 16:59:18 -0400 (Tue, 22 Apr 2025) $
 # @revision     $LastChangedRevision: 14295 $
 
@@ -105,7 +106,6 @@ rsync -avi ${HOME_DIR}/.gitflow_export "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.gitignore_global "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.glassfishadminpass "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.hgignore_global "${BKUP_DIR}"
-# rsync -avi ${HOME_DIR}/.kotlinc_history "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.lesshst "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.mysql_history "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.pdfbox.cache "${BKUP_DIR}"
@@ -116,6 +116,7 @@ rsync -avi ${HOME_DIR}/.viminfo "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zprofile "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zprofile_with_python "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zprofile.bak "${BKUP_DIR}"
+rsync -avi ${HOME_DIR}/.zsh_history "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zshenv "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zshrc "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zshrc_with_python "${BKUP_DIR}"
@@ -150,10 +151,10 @@ echo "Syncing ${HOME_DIR}/.cookiecutter_replay..."
 rsync -av --delete ${HOME_DIR}/.cookiecutter_replay "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.cups..."
 rsync -av --delete ${HOME_DIR}/.cups "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.docker..."
+rsync -av --delete ${HOME_DIR}/.docker "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.dropbox..."
 rsync -av --delete ${HOME_DIR}/.dropbox "${BKUP_DIR}"
-# echo "Syncing ${HOME_DIR}/.fleet..."
-# rsync -av --delete ${HOME_DIR}/.fleet "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.gradle..."
 rsync -av --delete ${HOME_DIR}/.gradle "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.groovy..."
@@ -166,10 +167,14 @@ echo "Syncing ${HOME_DIR}/.idm..."
 rsync -av --delete ${HOME_DIR}/.idm "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.ipython..."
 rsync -av --delete ${HOME_DIR}/.ipython "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.javacpp..."
+rsync -av --delete ${HOME_DIR}/.javacpp "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.jenkins..."
 rsync -av --delete ${HOME_DIR}/.jenkins "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.jupyter..."
 rsync -av --delete ${HOME_DIR}/.jupyter "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.logseq..."
+rsync -av --delete ${HOME_DIR}/.logseq "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.m2..."
 rsync -av --delete ${HOME_DIR}/.m2 "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.matplotlib..."
@@ -224,6 +229,8 @@ echo "Syncing ${HOME_DIR}/.warp..."
 rsync -av --delete ${HOME_DIR}/.warp "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.windsurf..."
 rsync -avir --delete ${HOME_DIR}/.windsurf "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.zsh_sessions..."
+rsync -avir --delete ${HOME_DIR}/.zsh_sessions "${BKUP_DIR}"
 
 echo "Syncing ${HOME_DIR}/Antlr-Projects..."
 rsync -avir --delete ${HOME_DIR}/Antlr-Projects "${BKUP_DIR}"
