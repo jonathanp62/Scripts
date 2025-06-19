@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# @(#)Sync-Jonathan.sh  0.2.15  06/19/2025
 # @(#)Sync-Jonathan.sh  0.2.14  04/22/2025
 # @(#)Sync-Jonathan.sh  0.2.13  04/07/2025
 # @(#)Sync-Jonathan.sh  0.2.12  03/23/2025
@@ -43,7 +44,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.0
-# @version      0.2.14
+# @version      0.2.15
 # @updated      $LastChangedDate: 2025-04-22 15:31:46 -0400 (Tue, 22 Apr 2025) $
 # @revision     $LastChangedRevision: 14294 $
 
@@ -115,6 +116,8 @@ rsync -avi ${HOME_DIR}/.viminfo "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zprofile "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zprofile_with_python "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zprofile.bak "${BKUP_DIR}"
+rsync -avi ${HOME_DIR}/.zsh_history "${BKUP_DIR}"
+rsync -avi ${HOME_DIR}/.zsh_sessions "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zshenv "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zshrc "${BKUP_DIR}"
 rsync -avi ${HOME_DIR}/.zshrc_with_python "${BKUP_DIR}"
@@ -149,10 +152,12 @@ echo "Syncing ${HOME_DIR}/.cookiecutter_replay..."
 rsync -avir --delete ${HOME_DIR}/.cookiecutter_replay "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.cups..."
 rsync -avir --delete ${HOME_DIR}/.cups "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.djl.ai..."
+rsync -avir --delete ${HOME_DIR}/.djl.ai "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.docker..."
+rsync -avir --delete ${HOME_DIR}/.docker "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.dropbox..."
 rsync -avir --delete ${HOME_DIR}/.dropbox "${BKUP_DIR}"
-# echo "Syncing ${HOME_DIR}/.fleet..."
-# rsync -avir --delete ${HOME_DIR}/.fleet "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.gradle..."
 rsync -avir --delete ${HOME_DIR}/.gradle "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.groovy..."
@@ -171,6 +176,8 @@ echo "Syncing ${HOME_DIR}/.jenkins..."
 rsync -avir --delete ${HOME_DIR}/.jenkins "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.jupyter..."
 rsync -avir --delete ${HOME_DIR}/.jupyter "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.logseq..."
+rsync -avir --delete ${HOME_DIR}/.logseq "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.m2..."
 rsync -avir --delete ${HOME_DIR}/.m2 "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.matplotlib..."
@@ -203,6 +210,8 @@ echo "Syncing ${HOME_DIR}/.scenebuilder..."
 rsync -avir --delete ${HOME_DIR}/.scenebuilder "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.soapuios..."
 rsync -avir --delete ${HOME_DIR}/.soapuios "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.sonarlint..."
+rsync -avir --delete ${HOME_DIR}/.sonarlint "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.sonarlint..."
 rsync -avir --delete ${HOME_DIR}/.sonarlint "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.sqldeveloper..."
