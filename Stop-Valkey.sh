@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh
 
+# @(#)Stop-Valkey.sh	0.2.0	07/25/2025
 # @(#)Stop-Valkey.sh	0.1.0	04/28/2025
 #
 # @author       Jonathan Parker
-# @version      0.1.0
+# @version      0.2.0
 # @since        0.1.0
 #
 # Usage:
@@ -31,7 +32,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-CONTAINER_NAME=local-valkey
+VERSION=8.1.3
+CONTAINER_NAME=local-valkey-${VERSION}
 
 CONTAINER=$(docker container ls --filter "name=${CONTAINER_NAME}" -q)
 
