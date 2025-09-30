@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# @(#)Sync-Jonathan.sh  0.2.16  09/30/2025
 # @(#)Sync-Jonathan.sh  0.2.15  06/19/2025
 # @(#)Sync-Jonathan.sh  0.2.14  04/22/2025
 # @(#)Sync-Jonathan.sh  0.2.13  04/07/2025
@@ -44,7 +45,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.0
-# @version      0.2.15
+# @version      0.2.16
 # @updated      $LastChangedDate: 2025-04-22 15:31:46 -0400 (Tue, 22 Apr 2025) $
 # @revision     $LastChangedRevision: 14294 $
 
@@ -195,6 +196,8 @@ echo "Syncing ${HOME_DIR}/.oracle_jre_usage..."
 rsync -avir --delete ${HOME_DIR}/.oracle_jre_usage "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.pkl..."
 rsync -avir --delete ${HOME_DIR}/.pkl "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.pm2..."
+rsync -avir --delete ${HOME_DIR}/.pm2 "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.putty..."
 rsync -avir --delete ${HOME_DIR}/.putty "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.pyenv..."
