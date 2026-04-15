@@ -96,8 +96,8 @@ HOME_DIR="${HOME}"
 BKUP_DIR="${BKUP_ROOT}/${BKUP_DIR}"
 
 RSYNC=/opt/homebrew/bin/rsync
-OPTS_DELETE=(-anvK "--iconv=utf-8-mac,utf-8" "--itemize-changes" "--delete")
-OPTS_NO_DELETE=(-anvK "--iconv=utf-8-mac,utf-8" "--itemize-changes")
+OPTS_DELETE=(-avK "--iconv=utf-8-mac,utf-8" "--itemize-changes" "--delete")
+OPTS_NO_DELETE=(-avK "--iconv=utf-8-mac,utf-8" "--itemize-changes")
 
 echo "Begin backing up to ${BKUP_DIR}..."
 ${RSYNC} "${OPTS_NO_DELETE[@]}" ${HOME_DIR}/.activemqrc "${BKUP_DIR}"
@@ -329,9 +329,7 @@ ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/MediaFire "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Movies..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Movies "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Music..."
-
-##### ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Music "${BKUP_DIR}"
-
+${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Music "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/MySQL..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/MySQL "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/NetBeans-Applications..."
