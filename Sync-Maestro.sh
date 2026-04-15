@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# @(#)Sync-Maestro.sh   0.2.16 	10/04/2025
 # @(#)Sync-Maestro.sh   0.2.15 	06/19/2025
 # @(#)Sync-Maestro.sh   0.2.12 	04/22/2025
 # @(#)Sync-Maestro.sh   0.2.11 	04/07/2025
@@ -45,7 +46,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.9
-# @version      0.2.15
+# @version      0.2.16
 # @updated      $LastChangedDate: 2025-04-22 16:59:18 -0400 (Tue, 22 Apr 2025) $
 # @revision     $LastChangedRevision: 14295 $
 
@@ -193,6 +194,8 @@ echo "Syncing ${HOME_DIR}/.oracle_jre_usage..."
 rsync -av --delete ${HOME_DIR}/.oracle_jre_usage "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.pkl..."
 rsync -av --delete ${HOME_DIR}/.pkl "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/.pm2..."
+rsync -av --delete ${HOME_DIR}/.pm2 "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.putty..."
 rsync -av --delete ${HOME_DIR}/.putty "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/.pyenv..."
@@ -317,7 +320,7 @@ rsync -avir --delete ${HOME_DIR}/MediaFire "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Movies..."
 rsync -avir --delete ${HOME_DIR}/Movies "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Music..."
-rsync -avir --delete ${HOME_DIR}/Music "${BKUP_DIR}"
+rsync -avir --delete --exclude-from=${HOME_DIR}/rsync-exclude-from.txt ${HOME_DIR}/Music "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/MySQL..."
 rsync -avir --delete ${HOME_DIR}/MySQL "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/NetBeans-Applications..."
