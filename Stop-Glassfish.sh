@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# @(#)Stop-Glassfish.sh       0.3.1   05/25/2026
 # @(#)Stop-Glassfish.sh       0.1.4   09/01/2015
 # @(#)Stop-Glassfish.sh       0.1.3   09/12/2014
 # @(#)Stop-Glassfish.sh       0.1.2   07/09/2014
@@ -13,9 +14,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.0
-# @version      0.1.4
-# @updated      $LastChangedDate: 2015-09-11 15:41:47 -0400 (Fri, 11 Sep 2015) $
-# @revision     $LastChangedRevision: 3016 $
+# @version      0.3.1
 
 # Usage:
 #       Stop-Glassfish.sh [optional-configuration-file-path]
@@ -90,7 +89,7 @@ else
 		echo "INFO: Glassfish is running as process ${PROC}."
 	done
 
-	${GF_HOME}/bin/asadmin stop-domain ${GF_DOMAIN}
+	sudo ${GF_HOME}/bin/asadmin stop-domain ${GF_DOMAIN}
 	sleep 3
 
 	PROCS=`ps -ef|grep ${GF_PATTERN}|grep -v grep|awk '{print $2}'`

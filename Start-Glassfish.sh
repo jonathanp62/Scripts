@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# @(#)Start-Glassfish.sh       0.3.1   05/25/2026
 # @(#)Start-Glassfish.sh       0.1.3   09/01/2015
 # @(#)Start-Glassfish.sh       0.1.2   07/09/2014
 # @(#)Start-Glassfish.sh       0.1.1   06/26/2014
@@ -11,10 +12,8 @@
 # All Rights Reserved.
 #
 # @author       Jonathan Parker
-# @since        0.1.0
+# @since        0.3.1
 # @version      0.1.3
-# @updated      $LastChangedDate: 2015-09-11 15:41:47 -0400 (Fri, 11 Sep 2015) $
-# @revision     $LastChangedRevision: 3016 $
 
 # Usage:
 #       Start-Glassfish.sh [optional-configuration-file-path]
@@ -82,7 +81,7 @@ PROCS=`ps -ef|grep ${GF_PATTERN}|grep -v grep|awk '{print $2}'`
 
 if [ -z "${PROCS}" ]
 then
-	${GF_HOME}/bin/asadmin start-domain ${GF_DOMAIN}
+	sudo ${GF_HOME}/bin/asadmin start-domain ${GF_DOMAIN}
 	sleep 3
 
 	PROCS=`ps -ef|grep ${GF_PATTERN}|grep -v grep|awk '{print $2}'`
