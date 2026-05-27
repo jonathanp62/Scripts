@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# @(#)Status-Tastebook.sh	0.1.2	09/01/2015
-# @(#)Status-Tastebook.sh	0.1.1	07/08/2014
-# @(#)Status-Tastebook.sh	0.1.0	06/18/2014
+# @(#)Status-TB.sh	0.1.2	09/01/2015
+# @(#)Status-TB.sh	0.1.1	07/08/2014
+# @(#)Status-TB.sh	0.1.0	06/18/2014
 #
 # MIT License
 #
@@ -33,9 +33,9 @@
 # @revision     $LastChangedRevision: 3016 $
 #
 # Usage:
-#       Status-Tastebook.sh
+#       Status-TB.sh
 #
-# Note: This script cannot detect is the Tastebook WS server was started inside IntelliJ IDEA.
+# Note: This script cannot detect is the TB WS server was started inside IntelliJ IDEA.
 
 if [ "`uname`" = "Darwin" ]
 then
@@ -58,11 +58,11 @@ PROCS=`ps -ef|grep "TASTEBOOK.SERVICE=ws"|grep -v grep|awk '{print $2}'`
 
 if [ -z "${PROCS}" ]
 then
-	echo "INFO: Tastebook is not running."
+	echo "INFO: TB is not running."
 else
 	for PROC in ${PROCS}
 	do
-		echo -e "${color_yellow}INFO: Tastebook is running as process ${PROC}.${color_off}"
+		echo -e "${color_yellow}INFO: TB is running as process ${PROC}.${color_off}"
 	done
 fi
 
