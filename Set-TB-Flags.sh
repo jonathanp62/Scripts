@@ -1,6 +1,7 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-# @(#)s3-upload.sh	0.1.0	07/06/2020
+# @(#)Set-TB-Flags.sh	0.1.1	07/25/2014
+# @(#)Set-TB-Flags.sh	0.1.0	07/16/2014
 #
 # MIT License
 #
@@ -26,21 +27,22 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.0
-# @version      0.1.0
-# @updated      $LastChangedDate: 2020-09-12 08:37:48 -0400 (Sat, 12 Sep 2020) $
-# @revision     $LastChangedRevision: 12928 $
+# @version      0.1.1
+# @updated      $LastChangedDate: 2014-07-25 10:59:47 -0400 (Fri, 25 Jul 2014) $
+# @revision     $LastChangedRevision: 1505 $
 
 # Usage:
-#       s3-upload.sh <file-name>
+#       . ./Set-TB-Flags.sh
 
-if [ "$#" -ne 1 ]
-then
-        echo "Usage: $0 <file-name>"
-        exit 1
-fi
+PROPERTIES="\
+-Dtastebook.search.solr.enabled=false \
+-Dtastebook.solr.messagequeue.enabled=false \
+-Dlogging.log4j.logger.tastebook.fetch=trace \
+-Dlogging.log4j.logger.tastebook.parser=trace\
+"
 
-BUCKET=9bc25a69caac3a-uploads
-PROFILE=s3-read-write
-SOURCE_FILE=${1}
+echo "Setting the following properties for TB WS..."
+echo ${PROPERTIES}
 
-aws s3 cp ${SOURCE_FILE} s3://${BUCKET} --profile ${PROFILE}
+export WS_FLAGS=${PROPERTIES}
+echo "Exported variable WS_FLAGS."
