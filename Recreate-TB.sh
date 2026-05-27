@@ -1,12 +1,29 @@
 #!/usr/bin/env bash
 
-# @(#)Recreate-PRHTB.sh 0.1.1   08/26/2015
-# @(#)Recreate-PRHTB.sh	0.1.0	01/16/2015
+# @(#)Recreate-TB.sh    0.1.1   08/26/2015
+# @(#)Recreate-TB.sh	0.1.0	01/16/2015
 #
-# Copyright (c) Random House, Inc.
-# 400 Hahn Road
-# Westminster, MD 21157 U.S.A.
-# All Rights Reserved.
+# MIT License
+#
+# Copyright (c) 2026 Jonathan M. Parker
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 #
 # @author       Jonathan Parker
 # @since        0.1.0
@@ -15,7 +32,7 @@
 # @revision     $LastChangedRevision: 3016 $
 #
 # Usage:
-#       Recreate-PRHTB.sh [optional-configuration-file-path]
+#       Recreate-TB.sh [optional-configuration-file-path]
 
 if [ "`uname`" = "Darwin" ]
 then
@@ -79,15 +96,15 @@ MYSQL_PATTERN=${mysql_pattern}
 MYSQL_ADMIN_USER=${mysql_admin_user}
 MYSQL_ADMIN_PASS=${mysql_admin_pass}
 
-PRHTB_CREATE_SQL=${HOME}/Dropbox/MyRH/Tastebook/PRHTB-Script.sql
-PRHTB_DB_NAME=prhtb
+TB_CREATE_SQL=${HOME}/Dropbox/MyRH/Tastebook/PRHTB-Script.sql
+TB_DB_NAME=prhtb
 
 echo "INFO: Sourced MySQL home: ${MYSQL_HOME}"
 echo "INFO: Sourced MySQL pattern: ${MYSQL_PATTERN}"
 echo "INFO: Sourced MySQL admin user: ${MYSQL_ADMIN_USER}"
 
-echo "INFO: Will connect to database: ${PRHTB_DB_NAME}"
-echo "INFO: Will use SQL file: ${PRHTB_CREATE_SQL}"
+echo "INFO: Will connect to database: ${TB_DB_NAME}"
+echo "INFO: Will use SQL file: ${TB_CREATE_SQL}"
 
 PROCS=`ps -ef|grep ${MYSQL_PATTERN}|grep -v grep|awk '{print $2}'`
 
@@ -102,13 +119,13 @@ else
 	done
 fi
 
-$MYSQL_HOME/bin/mysql ${PRHTB_DB_NAME} -u ${MYSQL_ADMIN_USER} -p${MYSQL_ADMIN_PASS} < ${PRHTB_CREATE_SQL}
+$MYSQL_HOME/bin/mysql ${TB_DB_NAME} -u ${MYSQL_ADMIN_USER} -p${MYSQL_ADMIN_PASS} < ${TB_CREATE_SQL}
 
 if [ "$?" -eq 0 ]
 then
-	echo "INFO: Done recreating the ${PRHTB_DB_NAME} database from ${PRHTB_CREATE_SQL}."
+	echo "INFO: Done recreating the ${TB_DB_NAME} database from ${TB_CREATE_SQL}."
 else
-	echo -e "${color_red_light}ERROR: Failed to recreate the ${PRHTB_DB_NAME} database.${color_off}"
+	echo -e "${color_red_light}ERROR: Failed to recreate the ${TB_DB_NAME} database.${color_off}"
 	exit 1
 fi
 

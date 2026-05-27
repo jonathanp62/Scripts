@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# @(#)Cipher.sh	0.1.1	02/03/2016
-# @(#)Cipher.sh	0.1.0	01/28/2016
+# @(#)Set-TB-Flags.sh	0.1.1	07/25/2014
+# @(#)Set-TB-Flags.sh	0.1.0	07/16/2014
 #
 # MIT License
 #
@@ -28,16 +28,21 @@
 # @author       Jonathan Parker
 # @since        0.1.0
 # @version      0.1.1
-# @updated      $LastChangedDate: 2016-02-09 07:48:31 -0500 (Tue, 09 Feb 2016) $
-# @revision     $LastChangedRevision: 3672 $
-#
+# @updated      $LastChangedDate: 2014-07-25 10:59:47 -0400 (Fri, 25 Jul 2014) $
+# @revision     $LastChangedRevision: 1505 $
+
 # Usage:
-#	Cipher.sh <keystore> <keystore-password> <alias> <alias-password> <plain-text-phrase>
+#       . ./Set-TB-Flags.sh
 
-CLASSPATH=\
-"${HOME}/NetBeans-Applications/java-crypto-0.1.1.jar:\
-${HOME}/NetBeans-Libraries/Commons Codec/commons-codec-1.10.jar"
+PROPERTIES="\
+-Dtastebook.search.solr.enabled=false \
+-Dtastebook.solr.messagequeue.enabled=false \
+-Dlogging.log4j.logger.tastebook.fetch=trace \
+-Dlogging.log4j.logger.tastebook.parser=trace\
+"
 
-CLASSNAME=net.jonathan.demo.java.crypto.Main
+echo "Setting the following properties for TB WS..."
+echo ${PROPERTIES}
 
-java -cp "${CLASSPATH}" ${CLASSNAME} "$@"
+export WS_FLAGS=${PROPERTIES}
+echo "Exported variable WS_FLAGS."
