@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# @(#)Sync-Maestro.sh   0.3.2 	06/13/2026
 # @(#)Sync-Maestro.sh   0.3.0 	04/14/2026
 # @(#)Sync-Maestro.sh   0.2.16 	10/04/2025
 # @(#)Sync-Maestro.sh   0.2.15 	06/19/2025
@@ -64,7 +65,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.9
-# @version      0.3.0
+# @version      0.3.2
 # @updated      $LastChangedDate: 2025-04-22 16:59:18 -0400 (Tue, 22 Apr 2025) $
 # @revision     $LastChangedRevision: 14295 $
 
@@ -410,6 +411,8 @@ ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/lib "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/wekafiles..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/wekafiles "${BKUP_DIR}"
 
+echo "Syncing /opt/glassfish..."
+sudo ${RSYNC} "${OPTS_DELETE[@]}" /opt/glassfish "${BKUP_ROOT}/maestro-opt-glassfish"
 echo "Syncing /opt/homebrew..."
 sudo ${RSYNC} "${OPTS_DELETE[@]}" /opt/homebrew "${BKUP_ROOT}/maestro-opt-homebrew"
 echo "Syncing /usr/local..."
