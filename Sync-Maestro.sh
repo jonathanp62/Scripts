@@ -411,10 +411,8 @@ ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/lib "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/wekafiles..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/wekafiles "${BKUP_DIR}"
 
-echo "Syncing /opt/glassfish..."
-sudo ${RSYNC} "${OPTS_DELETE[@]}" /opt/glassfish "${BKUP_ROOT}/maestro-opt-glassfish"
-echo "Syncing /opt/homebrew..."
-sudo ${RSYNC} "${OPTS_DELETE[@]}" /opt/homebrew "${BKUP_ROOT}/maestro-opt-homebrew"
+echo "Syncing /opt..."
+sudo ${RSYNC} "${OPTS_DELETE[@]}" /opt "${BKUP_ROOT}/maestro-opt"
 echo "Syncing /usr/local..."
 sudo ${RSYNC} "${OPTS_DELETE[@]}" /usr/local "${BKUP_ROOT}/maestro-usr-local"
 
