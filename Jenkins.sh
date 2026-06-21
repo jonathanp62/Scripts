@@ -31,6 +31,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-export APP_HOME=/usr/local/jenkins
+export APP_HOME=/opt/jenkins
 
 ${APP_HOME}/bin/cli.sh "$@"
