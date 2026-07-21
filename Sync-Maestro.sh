@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# @(#)Sync-Maestro.sh   0.3.3 	07/18/2026
 # @(#)Sync-Maestro.sh   0.3.2 	06/13/2026
 # @(#)Sync-Maestro.sh   0.3.0 	04/14/2026
 # @(#)Sync-Maestro.sh   0.2.16 	10/04/2025
@@ -65,7 +66,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.9
-# @version      0.3.2
+# @version      0.3.3
 # @updated      $LastChangedDate: 2025-04-22 16:59:18 -0400 (Tue, 22 Apr 2025) $
 # @revision     $LastChangedRevision: 14295 $
 
@@ -364,8 +365,6 @@ echo "Syncing ${HOME_DIR}/Node-Projects..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Node-Projects "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Old Projects..."
 ${RSYNC} "${OPTS_DELETE[@]}" "${HOME_DIR}/Old Projects" "${BKUP_DIR}"
-echo "Syncing ${HOME_DIR}/Oracle..."
-${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Oracle "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Pictures..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Pictures "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Pkl..."
@@ -392,8 +391,6 @@ echo "Syncing ${HOME_DIR}/SoapUI-Projects..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/SoapUI-Projects "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Solarized..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Solarized "${BKUP_DIR}"
-echo "Syncing ${HOME_DIR}/Sony..."
-${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Sony "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Temp..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Temp "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Textbook-Examples..."
