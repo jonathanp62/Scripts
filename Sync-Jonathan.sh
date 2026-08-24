@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# @(#)Sync-Jonathan.sh  0.3.4 	08/24/2026
 # @(#)Sync-Jonathan.sh  0.3.3 	07/18/2026
 # @(#)Sync-Jonathan.sh  0.3.2 	06/13/2026
 # @(#)Sync-Jonathan.sh  0.3.0 	04/14/2026
@@ -65,7 +66,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.0
-# @version      0.3.3
+# @version      0.3.4
 # @updated      $LastChangedDate: 2025-04-22 15:31:46 -0400 (Tue, 22 Apr 2025) $
 # @revision     $LastChangedRevision: 14294 $
 
@@ -379,6 +380,8 @@ echo "Syncing ${HOME_DIR}/React-Projects..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/React-Projects "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/Recovery..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Recovery "${BKUP_DIR}"
+echo "Syncing ${HOME_DIR}/Rust-Projects..."
+${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/Rust-Projects "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/S3..."
 ${RSYNC} "${OPTS_DELETE[@]}" ${HOME_DIR}/S3 "${BKUP_DIR}"
 echo "Syncing ${HOME_DIR}/SQL..."
