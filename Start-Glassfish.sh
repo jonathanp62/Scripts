@@ -99,6 +99,8 @@ PROCS=`ps -ef|grep ${GF_PATTERN}|grep -v grep|awk '{print $2}'`
 
 if [ -z "${PROCS}" ]
 then
+	export AS_HOSTNAME=localhost
+	
 	${GF_HOME}/bin/asadmin start-domain ${GF_DOMAIN}
 	sleep 3
 
