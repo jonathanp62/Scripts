@@ -107,6 +107,8 @@ else
 		echo "INFO: Glassfish is running as process ${PROC}."
 	done
 
+	export AS_HOSTNAME=localhost
+
 	${GF_HOME}/bin/asadmin stop-domain ${GF_DOMAIN}
 	sleep 3
 
