@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# @(#)Sync-Jonathan.sh  0.3.5 	11/09/2026
 # @(#)Sync-Jonathan.sh  0.3.4 	08/24/2026
 # @(#)Sync-Jonathan.sh  0.3.3 	07/18/2026
 # @(#)Sync-Jonathan.sh  0.3.2 	06/13/2026
@@ -66,7 +67,7 @@
 #
 # @author       Jonathan Parker
 # @since        0.1.0
-# @version      0.3.4
+# @version      0.3.5
 # @updated      $LastChangedDate: 2025-04-22 15:31:46 -0400 (Tue, 22 Apr 2025) $
 # @revision     $LastChangedRevision: 14294 $
 
@@ -101,6 +102,38 @@ then
         echo "ERROR: Variable external_bkup_dir_studio was not found in the configuration file ${CONFIG_FILE}."
         exit 1
 fi
+
+# Check to see if full disk access has been enabled for Terminal
+
+# -k 1 reads exactly 1 character. 
+# "reply?..." specifies the variable name and the prompt string.
+
+read -k 1 "reply?Has full disk access for Terminal been enabled? (y/n): "
+
+# Add a newline since pressing a single key doesn't automatically create one
+
+echo ""
+
+# Check the response using a case statement (handles both 'y' and 'Y')
+
+case "$reply" in
+  [yY])
+    echo "Proceeding with checking for the backup drive..."
+    # Add your 'Yes' code here
+    echo "OK"
+    exit 0
+    ;;
+  [nN])
+    echo "Opening System Settings Privacy and Security..."
+    open "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension"
+    echo "Restart Terminal after enabling full disk access."
+    exit 0
+    ;;
+  *)
+    echo "Exiting because of invalid input."
+    exit 1
+    ;;
+esac
 
 BKUP_ROOT="${external_bkup_mount_studio}"
 BKUP_DIR="${external_bkup_dir_studio}"
