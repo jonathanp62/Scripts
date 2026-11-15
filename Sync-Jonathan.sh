@@ -119,9 +119,6 @@ echo ""
 case "$reply" in
   [yY])
     echo "Proceeding with checking for the backup drive..."
-    # Add your 'Yes' code here
-    echo "OK"
-    exit 0
     ;;
   [nN])
     echo "Opening System Settings Privacy and Security..."
